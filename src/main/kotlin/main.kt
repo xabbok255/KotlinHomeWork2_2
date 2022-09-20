@@ -4,8 +4,9 @@ fun makeLikeWord(likes: UInt): String {
     val likeWordForm3 = "лайков"
 
     val lastDigit = likes.toString().last().digitToInt()
+    val lastTwoDigits = likes.toString().takeLast(2).toInt()
 
-    if (lastDigit == 0 || likes in 10u..19u || lastDigit in 5..9) {
+    if (lastDigit == 0 || (lastTwoDigits in 10..19) || lastDigit in 5..9) {
         return likeWordForm3
     } else if (lastDigit in 2..4) {
         return likeWordForm2
@@ -15,7 +16,7 @@ fun makeLikeWord(likes: UInt): String {
 }
 
 fun main() {
-    for (likes in 0u..31u) {
+    for (likes in 1u..125u) {
         println("$likes ${makeLikeWord(likes)}")
     }
 }
